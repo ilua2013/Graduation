@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public class TargetDetermine : MonoBehaviour
 {
     private CircleCollider2D _collider;

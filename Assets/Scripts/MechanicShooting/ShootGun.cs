@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class ShootGun : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
@@ -12,6 +13,7 @@ public class ShootGun : MonoBehaviour
     private Animator _animator;
     private Enemy _target;
     private float _elapssedTime;
+    private const string Shoot = "Shoot";
 
     private void Start()
     {
@@ -31,7 +33,7 @@ public class ShootGun : MonoBehaviour
 
         if(_elapssedTime >= _delay)
         {
-            _animator.SetTrigger("Shoot");
+            _animator.SetTrigger(Shoot);
             Instantiate(_bullet, _pointShooting.position, gameObject.transform.rotation);
 
             _elapssedTime = 0;

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(TMP_Text))]
+[RequireComponent(typeof(Animator))]
 public class TextPlusMoney : MonoBehaviour
 {
     private Player _player;
     private TMP_Text _text;
     private Animator _animator;
+    private const string FinishAnimation = "FinishAnimation";
+    private const string PlusMoney = "PlusMoney";
 
     private void Awake()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidsController : MonoBehaviour
+public class AsteroidsSpawner : MonoBehaviour
 {
     [SerializeField] private Asteroid[] _asteroids;
     [SerializeField] private float _delaySpawn;
