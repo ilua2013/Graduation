@@ -6,6 +6,7 @@ public class CameraMover : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private float _speed;
+    private const float _maxDistanceToPlayer = 0.95f;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class CameraMover : MonoBehaviour
 
         _speed = distance.magnitude > 2 ? 7 : 5;
 
-        if (distance.magnitude >= 1 || distance.magnitude >= 0.95f)
+        if (distance.magnitude >= _maxDistanceToPlayer)
             transform.Translate(distance.normalized * _speed * Time.deltaTime);
     }
 }

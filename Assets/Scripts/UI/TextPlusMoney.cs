@@ -7,7 +7,7 @@ using TMPro;
 [RequireComponent(typeof(Animator))]
 public class TextPlusMoney : MonoBehaviour
 {
-    private Player _player;
+    private PlayerMoney _playerMoney;
     private TMP_Text _text;
     private Animator _animator;
     private const string FinishAnimation = "FinishAnimation";
@@ -15,25 +15,25 @@ public class TextPlusMoney : MonoBehaviour
 
     private void Awake()
     {
-        _player = GetComponentInParent<Player>();
+        _playerMoney = GetComponentInParent<PlayerMoney>();
         _text = GetComponent<TMP_Text>();
         _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
-        _player.MoneyReceived += StartAnimation;
+        _playerMoney.MoneyReceived += StartAnimation;
     }
 
     private void OnDisable()
     {
-        _player.MoneyReceived -= StartAnimation;
+        _playerMoney.MoneyReceived -= StartAnimation;
     }
 
     public void StartAnimation(int reward)
     {
-        _animator.SetTrigger("FinishAnimation");
-        _animator.SetTrigger("PlusMoney");
+        _animator.SetTrigger(FinishAnimation);
+        _animator.SetTrigger(PlusMoney);
         _text.text = $"+{reward}";
     }
 }

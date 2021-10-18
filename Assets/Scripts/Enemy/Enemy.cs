@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
-        EnemyDied -= _player.PlusReward;
+        EnemyDied -= _player.GetComponent<PlayerMoney>().PlusReward;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     public void SetTarget(Player player)
     {
         _player = player;
-        EnemyDied += _player.PlusReward;
+        EnemyDied += _player.GetComponent<PlayerMoney>().PlusReward;
     }
 
     private void Die()

@@ -6,7 +6,7 @@ public class Construction : MonoBehaviour
 {
     [SerializeField] private GameObject _windowTowers;
     [SerializeField] private Tower[] _towers;
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerMoney _playerMoney;
     [SerializeField] private float _offsetY;
 
     private PathBuild _pathBuild;
@@ -21,12 +21,12 @@ public class Construction : MonoBehaviour
 
     public void BuildTower(int indexTower)
     {
-        if(_player.Money > _towers[indexTower].Price)
+        if(_playerMoney.Count > _towers[indexTower].Price)
         {
             Instantiate(_towers[indexTower], _pathBuild.transform.position, Quaternion.identity);
             Destroy(_pathBuild);
 
-            _player.MinusMoney(_towers[indexTower].Price);
+            _playerMoney.MinusMoney(_towers[indexTower].Price);
         }
 
         _windowTowers.SetActive(false);

@@ -7,23 +7,23 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Player _targetEnemy;
 
-    private Vector3 pathSpawn;
-    private float offsetX;
-    private float offsetY;
+    private Vector3 _pathSpawn;
+    private float _offsetX;
+    private float _offsetY;
 
     public event UnityAction<Enemy> _enemySpawned;
 
     private void Start()
     {
-        offsetX = gameObject.transform.localScale.x / 2;
-        offsetY = gameObject.transform.localScale.y / 2;
+        _offsetX = gameObject.transform.localScale.x / 2;
+        _offsetY = gameObject.transform.localScale.y / 2;
     }
 
     public void InstatiateEnemy(Enemy enemy)
     {
-        pathSpawn = new Vector2(Random.Range(offsetX, -offsetX), Random.Range(offsetY, -offsetY));
+        _pathSpawn = new Vector2(Random.Range(_offsetX, -_offsetX), Random.Range(_offsetY, -_offsetY));
 
-        var spawned = Instantiate(enemy, transform.position + pathSpawn, Quaternion.identity);
+        var spawned = Instantiate(enemy, transform.position + _pathSpawn, Quaternion.identity);
 
         spawned.GetComponent<Enemy>().SetTarget(_targetEnemy);
         spawned.GetComponent<EnemyMover>().SetTarget(_targetEnemy);
@@ -33,8 +33,8 @@ public class Spawner : MonoBehaviour
 
     public void InstatiateAsteroid(Asteroid asteroid)
     {
-        pathSpawn = new Vector2(Random.Range(offsetX, -offsetX), Random.Range(offsetY, -offsetY));
+        _pathSpawn = new Vector2(Random.Range(_offsetX, -_offsetX), Random.Range(_offsetY, -_offsetY));
 
-        Instantiate(asteroid, transform.position + pathSpawn, Quaternion.identity);
+        Instantiate(asteroid, transform.position + _pathSpawn, Quaternion.identity);
     }
 }

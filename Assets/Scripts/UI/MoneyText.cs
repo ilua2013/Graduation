@@ -6,7 +6,7 @@ using TMPro;
 [RequireComponent(typeof(TMP_Text))]
 public class MoneyText : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerMoney _playerMoney;
 
     private TMP_Text _textMoney;
 
@@ -18,16 +18,16 @@ public class MoneyText : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.MoneyChanged += SetCurrentMoney;
+        _playerMoney.MoneyChanged += SetCurrentMoney;
     }
 
     private void OnDisable()
     {
-        _player.MoneyChanged -= SetCurrentMoney;
+        _playerMoney.MoneyChanged -= SetCurrentMoney;
     }
 
     private void SetCurrentMoney()
     {
-        _textMoney.text = _player.Money.ToString();
+        _textMoney.text = _playerMoney.Count.ToString();
     }
 }
